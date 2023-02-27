@@ -1,3 +1,6 @@
+# HashNeRF-pytorch-MPS
+Slightly altered fork of HashNeRF-pytorch that will run using Apple Metal Performance Shaders on M series hardware. Some operators in MPS backend are not supported such as aten::cumprod.out. Uses RAdam from torch, not the included radam.py. This was only an experiment to see if I could get it to run on MPS. While it does run, current performance is very slow to the point of being unusable. However, I have committed it anyway for my own future reference. Requires pytorch-2.0 nightly, as `torch.set_default_device("mps")` is not available in current. [see this issue](https://github.com/pytorch/pytorch/issues/82296)
+
 # HashNeRF-pytorch
 [Instant-NGP](https://github.com/NVlabs/instant-ngp) recently introduced a Multi-resolution Hash Encoding for neural graphics primitives like [NeRFs](https://www.matthewtancik.com/nerf). The original NVIDIA implementation mainly in C++/CUDA, based on [tiny-cuda-nn](https://github.com/NVlabs/tiny-cuda-nn), can train NeRFs upto 100x faster!
 
